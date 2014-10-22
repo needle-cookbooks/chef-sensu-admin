@@ -1,4 +1,14 @@
 metadata
-site :opscode
+source "https://supermarket.getchef.com"
 
-cookbook 'ruby'
+group :integration do
+  cookbook 'apt'
+  cookbook 'yum'
+  cookbook 'ruby'
+end
+
+group :test do
+  cookbook "apt"
+
+  cookbook "sensu-admin_test", :path => "./test/kitchen/cookbooks/sensu-admin_test"
+end
